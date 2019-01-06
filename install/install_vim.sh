@@ -1,10 +1,11 @@
 #!/bin/bash
 
-if [[ -e $HOME/.vim ]]
+TARGET=$HOME/.vim
+BAK=$HOME/.vim_bak
+
+if [[ -e $TARGET ]]
 then
-	mkdir -p $HOME/.vim_bak
-	cp -rf $HOME/.vim/* $HOME/.vim_bak/	
-	rm -rf $HOME/.vim
+	mv $TARGET $BAK
 fi
 
-ln -s `pwd`/vim ~/.vim
+ln -s `pwd`/vim $TARGET

@@ -1,13 +1,11 @@
 #!/bin/bash
 
 TARGET="$HOME/.config/i3"
-BAK="$HOME/.config_bak/i3_bak"
+BAK="$HOME/.config_bak/"
 
 if [[ -e $TARGET ]]
 then
-	mkdir -p $BAK
-	cp -rf $TARGET/* $BAK
-	rm -rf $TARGET
+	mv $TARGET $BAK
 fi
 
 # Prequisteres
