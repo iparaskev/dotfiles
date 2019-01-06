@@ -1,0 +1,13 @@
+i3
+  polybar
+  i3lock
+  ranger
+  zathura
+  feh
+  xrandr
+  alsa
+  scrot
+bash
+  The base16 folder is from this https://github.com/chriskempson/base16-shell
+  repo. With a change in the bashrc for my personal choice. The folder in not 
+  by any means my work.
