@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# for correct execution you have add /sys/class/backlight to video group
+# and then add the user you want to the current 
+# TODO: 1) make a c programm with the same capabilities
+#       2) write the usage of the programm
+
+folder=/sys/class/backlight/intel_backlight
+current=$(cat $folder/brightness)
+max=$(cat $folder/max_brightness)
+
+args=$@
+len_args=$(echo $args | wc -w)
+
+# get 10%
+ten=45
+
+# initialize variables
+SET=-1
+DEC=0
+INC=0
+
+# loop until the end of arguments
+# TODO: fix error variable to use only in error
+counter=0
+let end=$len_args/2
+while [ $counter -lt $end ];
+do
+	key=$1 
+	# cases set, inc, dec
+	case $key in
+	-set | --set) 
+		SET=$2 # set the variable for brightness
+		shift; # skip flag
+		shift; # skip value
+	;;
+	-inc | --increment)
+		INC=$2 # how many times
+		shift; # skip flag
+		shift; # skip value
+	;;
+	-dec | --decrement)
+		DEC=$2 # how many times
+		shift; # skip flag
+		shift; # skip value
+	;;
+	*)
+		ERROR="Invalid argument"
+		break
+	;;
+	esac
+	let counter=counter+1
+done
+
+if [ $SET -gt -1 ];
+then
+	let new_value=$SET+$INC*$ten-$DEC*$ten
+else
+	let new_value=$current+$INC*$ten-$DEC*$ten
+fi
+
+
+# error handling for borders
+if [ $new_value -le 0 ];
+then
+	new_value=1
+elif [ $new_value -gt $max ];
+then
+	new_value=$max
+fi
+
+echo $new_value > $folder/brightness

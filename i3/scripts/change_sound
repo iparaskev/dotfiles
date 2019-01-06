@@ -1,0 +1,11 @@
+#!/bin/bash
+
+main="/home/iasonas/.asoundrc";
+second="/home/iasonas/.asoundrc_else";
+
+# Change the .asoundrc file with a second configuration
+cp $main tmp;
+cp $second $main;
+cp tmp $second;
+rm tmp;
+
