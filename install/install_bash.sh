@@ -32,8 +32,8 @@ then
 	     -O ~/.git-completion.bash
 fi
 
-ln -s `pwd`/bashrc ~/.bashrc
-ln -s `pwd`/bash_profile ~/.bash_profile
-ln -s `pwd`/bash_aliases ~/.bash_aliases
-ln -s `pwd`/bash_functions ~/.bash_functions
-ln -s `pwd`/bash_completions ~/.bash_completions
+ln -s `pwd`/bash/bashrc ~/.bashrc
+ln -s `pwd`/bash/bash_profile ~/.bash_profile
+ln -s `pwd`/bash/bash_aliases ~/.bash_aliases
+ln -s `pwd`/bash/bash_functions ~/.bash_functions
+ln -s `pwd`/bash/bash_completions ~/.bash_completions
