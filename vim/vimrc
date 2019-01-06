@@ -1,0 +1,88 @@
+scriptencoding utf-8
+set encoding=utf-8
+
+colorscheme gruvbox  " add color
+set background=dark
+
+syntax enable 	     " enable syntax highlighting
+set number           " show line numbers
+set cursorline       " highlight current line 
+set hlsearch         " highlight matches at search
+
+let &colorcolumn="80"    " Show 80 line vertical line
+
+" python identation
+autocmd FileType py setlocal tabstop=4 softtabstop=4 expandtab
+
+" c language indentation
+autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+
+" bash indentation
+autocmd FileType sh setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+
+" Buftabline settings
+let g:buftabline_numbers = 1
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+                                    \ | exe "normal! g'\"" | endif
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']     "Python checker
+let g:syntastic_quiet_messages = {
+    \ "!level": "errors",
+    \ "type":   "syntax",
+    \ "regex":  '\m\[C03\d\d\]',
+    \ "file:p": ['\m\c.h$'] }
+
+"""""""""""""""""  For terminals that dont support 256 colors
+"""""""""""""""""
+" (Or if you want terminal's default colors)
+"
+" " Comment these out
+set t_Co=256                                          " Use 256 terminal
+
+" vundle configuration
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'vim-syntastic/syntastic'     " Syntax checker for various languages
+Plugin 'scrooloose/nerdtree'         " Tree at the left
+Plugin 'jiangmiao/auto-pairs'        " Auto pairs of (), {} etc.
+Plugin 'ap/vim-buftabline'           " Open buffers in a list on tabline
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
