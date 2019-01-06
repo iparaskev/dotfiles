@@ -1,0 +1,5 @@
+alias ls='ls --color=auto'                   # Default ls
+alias ubuntu='cd /mnt/ubuntu/home/iasonas'   # Go to ubuntu partition
+alias rstudio='/usr/lib/rstudio/bin/rstudio' # Run rstudio
+alias grep='grep --color=auto'               # Grep with colors
+alias ranger='i3 workspace 5; xterm ranger'  # Open ranger on workspace 5

@@ -1,0 +1,7 @@
+# Completions
+complete -cf sudo                        # Completion after sudo 
+complete -d ls                           # ls completion only directories
+complete -W "$(ls ~/virtualenvs)" workon # Completion to custom function
+
+# Git completion
+source /home/iasonas/Github/git-completion.bash

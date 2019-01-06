@@ -1,0 +1,39 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Change color of the info before cursor bash
+PS1="\[\033[1;38;5;34m\][\u\[\033[1;38;5;25m\] \w\[\033[1;38;5;34m\]]$ \[\033[0m\]"
+
+# Make the cursor a steady bar
+echo -e -n "\x1b[\x36 q"
+
+# Bind Ctrl-T to open new terminal in the current directory
+bind '"\C-T":"xterm &\n"'
+
+# Base16 colors
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# Aliases
+if [ -f "$HOME/.bash_aliases" ];
+then
+	source ~/.bash_aliases
+fi
+
+# Functions
+if [ -f "$HOME/.bash_functions" ];
+then
+	source ~/.bash_functions
+fi
+
+# Completions
+if [ -f "$HOME/.bash_completions" ];
+then
+	source ~/.bash_completions
+fi
