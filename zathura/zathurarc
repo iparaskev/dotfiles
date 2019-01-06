@@ -1,0 +1,7 @@
+# Copy selected text to clipboard for paste
+set selection-clipboard clipboard
+
+# Show only the filename
+set window-title-basename true
+set statusbar-basename true
+
