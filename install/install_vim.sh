@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# TODO: Add check for every plugin
+# TODO: Add check if the link already exists
+
 TARGET=$HOME/.vim
 BAK=$HOME/.vim_bak
 
 if [[ -e $TARGET ]]
 then
-	mkdir -p $BAK
 	mv $TARGET $BAK
 fi
 
