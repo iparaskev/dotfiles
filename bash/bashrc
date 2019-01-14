@@ -14,6 +14,9 @@ echo -e -n "\x1b[\x36 q"
 # Bind Ctrl-T to open new terminal in the current directory
 bind '"\C-T":"xterm &\n"'
 
+# Add noclobber
+set -o noclobber
+
 # Base16 colors
 source ~/.config/base16-shell/base16-current.sh
 
