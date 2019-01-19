@@ -3,16 +3,21 @@
 TARGET="$HOME/.config/i3"
 BAK="$HOME/.config_bak/"
 
-if [[ -e $TARGET ]]
+# Back up the deafault folder
+if [[ -d $TARGET ]]
 then
 	mkdir -p $BAK
 	mv $TARGET $BAK
 fi
 
+# Check if the folder already exists
+if [[ ! -e $TARGET ]]
+then
+	ln -s `pwd`/i3 $TARGET
+fi
+
 # Prequisteres
-if [[ ! -e $HOME/Pictures/screenshots ]]
+if [[ ! -d $HOME/Pictures/screenshots ]]
 then
 	mkdir -p $HOME/Pictures/screenshots
 fi
-
-ln -s `pwd`/i3 $TARGET

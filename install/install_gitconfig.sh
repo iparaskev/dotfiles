@@ -3,10 +3,14 @@
 TARGET="$HOME/.gitconfig"
 BAK="$HOME/.gitconfig.bak/"
 
-if [[ -e $TARGET ]]
+# Back up the deafault folder
+if [[ -f $TARGET ]]
 then
-	mkdir -p $BAK
 	mv $TARGET $BAK
 fi
 
-ln -s `pwd`/gitconfig $TARGET
+# Check if the file already exists
+if [[ ! -e $TARGET ]]
+then
+	ln -s `pwd`/gitconfig $TARGET
+fi

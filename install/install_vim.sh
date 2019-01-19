@@ -1,22 +1,51 @@
 #!/bin/bash
 
-# TODO: Add check for every plugin
-# TODO: Add check if the link already exists
-
 TARGET=$HOME/.vim
 BAK=$HOME/.vim_bak
 
-if [[ -e $TARGET ]]
+# Back up the deafault folder
+if [[ -d $TARGET ]]
 then
 	mv $TARGET $BAK
 fi
 
-mkdir -p vim/bundle
+# Check if the folder already exists
+if [[ ! -e $TARGET ]]
+then
+	ln -s `pwd`/vim $TARGET
+fi
 
-git clone https://github.com/VundleVim/Vundle.vim.git vim/bundle/Vundle.vim
-git clone git://github.com/jiangmiao/auto-pairs.git vim/bundle/auto-pairs
-git clone https://github.com/scrooloose/nerdtree.git vim/bundle/nerdtree
-git clone https://github.com/vim-syntastic/syntastic vim/bundle/syntastic
-git clone https://github.com/ap/vim-buftabline vim/bundle/vim-buftabline
+# Vim plugins
+PLUGIN_FOLDER=vim/bundle
 
-ln -s `pwd`/vim $TARGET
+mkdir -p $PLUGIN_FOLDER
+
+PLUGIN=$PLUGIN_FOLDER/Vundle.vim
+if [[ ! -d $PLUGIN ]]
+then
+	git clone https://github.com/VundleVim/Vundle.vim.git $PLUGIN
+fi
+
+PLUGIN=$PLUGIN_FOLDER/auto-pairs
+if [[ ! -d $PLUGIN ]]
+then
+	git clone git://github.com/jiangmiao/auto-pairs.git $PLUGIN
+fi
+
+PLUGIN=$PLUGIN_FOLDER/nerdtree
+if [[ ! -d $PLUGIN ]]
+then
+	git clone https://github.com/scrooloose/nerdtree.git $PLUGIN
+fi
+
+PLUGIN=$PLUGIN_FOLDER/syntastic
+if [[ ! -d $PLUGIN ]]
+then
+	git clone https://github.com/vim-syntastic/syntastic $PLUGIN
+fi
+
+PLUGIN=$PLUGIN_FOLDER/vim-buftabline
+if [[ ! -d $PLUGIN ]]
+then
+	git clone https://github.com/ap/vim-buftabline $PLUGIN
+fi

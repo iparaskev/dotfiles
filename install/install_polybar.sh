@@ -3,10 +3,15 @@
 TARGET="$HOME/.config/polybar"
 BAK="$HOME/.config_bak/"
 
-if [[ -e $TARGET ]]
+# Back up the deafault folder
+if [[ -d $TARGET ]]
 then
 	mkdir -p $BAK
 	mv $TARGET $BAK
 fi
 
-ln -s `pwd`/polybar $TARGET
+# Check if the folder already exists
+if [[ ! -e $TARGET ]]
+then
+	ln -s `pwd`/polybar $TARGET
+fi
