@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TARGET="$HOME/.gitconfig"
-BAK="$HOME/.gitconfig.bak/"
+BAK="$HOME/.gitconfig.bak"
 
 # Back up the deafault folder
 if [[ -f $TARGET ]]
