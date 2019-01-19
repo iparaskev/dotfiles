@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 # VARIABLES
-targets = base16-shell bash i3 polybar ranger vim zathura
+targets = base16-shell bash i3 polybar ranger vim zathura gitconfig Xresources
 
 # DIRECTORIES
 INSTALL = install
@@ -28,5 +28,11 @@ vim: FORCE
 
 zathura: FORCE
 	$(SHELL) $(INSTALL)/install_zathura.sh
+
+gitconfig: FORCE
+	$(SHELL) $(INSTALL)/install_gitconfig.sh
+
+Xresources: FORCE
+	$(SHELL) $(INSTALL)/install_xresources.sh
 
 FORCE: ;
