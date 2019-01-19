@@ -216,10 +216,10 @@ bindsym Ctrl+Mod1+f workspace $RANGER_WS; exec xterm ranger
 bindsym Ctrl+Mod1+l exec i3lock --color=000000 
 
 # Move workspace to hdmi screen
-bindsym Mod4+x move workspace to output HDMI-1
+bindsym Mod4+x move workspace to output left
 
 # Move workspace to eDP-1 screen
-bindsym Mod4+z move workspace to output eDP-1
+bindsym Mod4+z move workspace to output right
 
 # Activate second screen
 bindsym Mod1+x exec xrandr --output HDMI-1 --auto --left-of eDP-1
