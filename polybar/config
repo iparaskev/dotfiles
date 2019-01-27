@@ -69,7 +69,7 @@ module-margin = 1
 ; Modules
 modules-left = i3
 modules-center = cpu memory temperature filesystem wireless-network 
-modules-right = alsa backlight battery xkeyboard date
+modules-right = alsa backlight battery xkeyboard date powermenu 
 
 [module/xwindow]
 type = internal/xwindow
@@ -302,31 +302,39 @@ label-connected-underline = ${colors.red}
 [module/powermenu]
 type = custom/menu
 
+format-padding = 1
+
 expand-right = true
 
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-open = 
+format-underline = ${colors.blue2}
+label-close = 
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-margin = 1
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
+
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
+
+menu-0-2 = hibernate
+menu-0-2-exec = menu-open-3
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-2-0 = cancel
+menu-2-0-exec = menu-open-0
+menu-2-1 = power off
+menu-2-1-exec = sudo poweroff
+
+menu-3-0 = cancel
+menu-3-0-exec = menu-open-0
+menu-3-1 = hibernate
+menu-3-1-exec =  systemctl hibernate
 
 [settings]
 screenchange-reload = true
