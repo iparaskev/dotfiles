@@ -4,3 +4,6 @@ workon(){ source ~/virtualenvs/$1/bin/activate; }
 # Function for downloading one file from git
 # First argument is user/repo and second is the file path
 git_get(){ wget https://github.com/$1/raw/master/$2; }
+
+# Function for activating ssh-agent
+ssh_agent(){ eval `ssh-agent`; ssh-add; }
