@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TARGET="$HOME/.Xresources"
-BAK="$HOME/.Xresources.bak/"
+BAK="$HOME/.Xresources.bak"
 
 # Back up the deafault folder
 if [[ -f $TARGET ]]
