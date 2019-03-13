@@ -10,6 +10,9 @@ xterm*vt100.metaSendsEscape: true
 !show scrollbar
 !xterm*vt100.scrollBar: true
 
+!dont autoscroll
+!xterm*scrollTtyOutput: false
+
 !key bindings
 xterm*vt100*translations: #override \n\
     Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
@@ -19,7 +22,7 @@ xterm*vt100*translations: #override \n\
 !xterm*faceName: DejaVu Sans Mono Book
 xterm*faceName: Anonymous Pro 
 !xterm*faceName: xos4 Terminus
-xterm*faceSize: 12
+xterm*faceSize: 11
 xterm*renderFont: true
 
 !change colors
