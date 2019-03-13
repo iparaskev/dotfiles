@@ -32,27 +32,32 @@ then
 	     -O ~/.git-completion.bash
 fi
 
+TARGET=bashrc
 if [[ ! -e $TARGET ]]
 then
-	ln -s `pwd`/bash/bashrc ~/.bashrc
+	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
 
+TARGET=bash_profile
 if [[ ! -e $TARGET ]]
 then
-	ln -s `pwd`/bash/bash_profile ~/.bash_profile
+	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
 
+TARGET=bash_aliases
 if [[ ! -e $TARGET ]]
 then
-	ln -s `pwd`/bash/bash_aliases ~/.bash_aliases
+	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
 
+TARGET=bash_functions
 if [[ ! -e $TARGET ]]
 then
-	ln -s `pwd`/bash/bash_functions ~/.bash_functions
+	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
 
+TARGET=bash_completions
 if [[ ! -e $TARGET ]]
 then
-	ln -s `pwd`/bash/bash_completions ~/.bash_completions
+	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
