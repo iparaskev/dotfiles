@@ -187,6 +187,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Change border
 default_border pixel
+hide_edge_borders both
 
 # Workspaces number per program
 set $ZATHURA_WS 4
