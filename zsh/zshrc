@@ -1,0 +1,62 @@
+#!/usr/bin/zsh
+
+#
+# ~/.zshrc
+#
+
+# Check if zplug is installed
+if [[ ! -d $HOME/.zplug ]];
+then
+	git clone https://github.com/zplug/zplug ~/.zplug
+	source $HOME/.zplug/init.zsh && zplug update --self
+fi
+
+# Init zplug
+source $HOME/.zplug/init.zsh
+
+# Plugins
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "robbyrussell/oh-my-zsh", from:github, use:"lib/*.zsh"
+zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+
+# Theme
+zplug "themes/refined", from:oh-my-zsh, as:plugin
+
+# Load plugins that have not been installed yet
+if ! zplug check --verbose;
+then
+	printf "Install? [y/N]: "
+	if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+zplug load
+
+# Vi mode
+bindkey -v
+
+# History settings
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=1000
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
+[[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
+
+# Source aliases and functions
+if [[ -f $HOME/.zsh_aliases ]];
+then
+	source $HOME/.zsh_aliases
+fi
+if [[ -f $HOME/.zsh_functions ]];
+then
+	source $HOME/.zsh_functions
+fi

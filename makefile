@@ -1,7 +1,8 @@
-SHELL := /bin/bash
+SHELL := /bin/sh
 
 # VARIABLES
-targets = base16-shell bash i3 polybar ranger vim zathura gitconfig Xresources
+targets = base16-shell bash i3 polybar ranger vim zathura gitconfig Xresources \
+	  zsh
 
 # DIRECTORIES
 INSTALL = install
@@ -13,6 +14,9 @@ base16-shell: FORCE
 
 bash: FORCE
 	$(SHELL) $(INSTALL)/install_bash.sh
+
+zsh: FORCE
+	$(SHELL) $(INSTALL)/install_zsh.sh
 
 i3: FORCE
 	$(SHELL) $(INSTALL)/install_i3.sh
