@@ -5,6 +5,11 @@ then
 	mv ~/.zshrc ~/.zshrc.bak
 fi
 
+if [[ -f ~/.zprofile ]]
+then
+	mv ~/.zprofile ~/.zprofile.bak
+fi
+
 if [[ -f ~/.zsh_aliases ]]
 then
 	mv ~/.zsh_aliases ~/.zsh_aliases.bak
@@ -16,6 +21,12 @@ then
 fi
 
 TARGET=zshrc
+if [[ ! -e $HOME/.$TARGET ]]
+then
+	ln -s `pwd`/zsh/$TARGET ~/.$TARGET
+fi
+
+TARGET=zprofile
 if [[ ! -e $HOME/.$TARGET ]]
 then
 	ln -s `pwd`/zsh/$TARGET ~/.$TARGET
