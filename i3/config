@@ -185,6 +185,11 @@ bindsym Mod4+r mode "resize"
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+# Floating windows borders 
+floating_minimum_size 55 x 55
+floating_maximum_size -1 x -1
+for_window [class="Navigator"] floating disable
+
 # Change border
 default_border pixel
 hide_edge_borders both
