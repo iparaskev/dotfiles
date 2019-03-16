@@ -33,31 +33,31 @@ then
 fi
 
 TARGET=bashrc
-if [[ ! -e $TARGET ]]
+if [[ ! -e $HOME/$TARGET ]]
 then
 	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
 
 TARGET=bash_profile
-if [[ ! -e $TARGET ]]
+if [[ ! -e $HOME/$TARGET ]]
 then
 	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
 
 TARGET=bash_aliases
-if [[ ! -e $TARGET ]]
+if [[ ! -e $HOME/$TARGET ]]
 then
 	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
 
 TARGET=bash_functions
-if [[ ! -e $TARGET ]]
+if [[ ! -e $HOME/$TARGET ]]
 then
 	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
 
 TARGET=bash_completions
-if [[ ! -e $TARGET ]]
+if [[ ! -e $HOME/$TARGET ]]
 then
 	ln -s `pwd`/bash/$TARGET ~/.$TARGET
 fi
