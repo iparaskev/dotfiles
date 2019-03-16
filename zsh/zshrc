@@ -60,3 +60,6 @@ if [[ -f $HOME/.zsh_functions ]];
 then
 	source $HOME/.zsh_functions
 fi
+
+# Source base16 color
+source $HOME/.config/base16-shell/base16-current.sh
