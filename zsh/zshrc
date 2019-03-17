@@ -19,6 +19,8 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "robbyrussell/oh-my-zsh", from:github, use:"lib/*.zsh"
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/colorize", from:oh-my-zsh
+zplug "plugins/history-substring-search", from:oh-my-zsh
 
 # Theme
 zplug "themes/refined", from:oh-my-zsh, as:plugin
@@ -50,6 +52,7 @@ zle -N down-line-or-beginning-search
 
 [[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
 [[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
+bindkey "^[." insert-last-word
 
 # Source aliases and functions
 if [[ -f $HOME/.zsh_aliases ]];
