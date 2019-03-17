@@ -223,7 +223,7 @@ assign [class="(?i)libreoffice"] $LIBREOFFICE
 bindsym Ctrl+Mod1+f workspace $RANGER_WS; exec xterm ranger
 
 # Bindsym for locking the screen
-bindsym Ctrl+Mod1+l exec i3lock --color=000000 
+bindsym Ctrl+Mod1+l exec ~/.config/i3/scripts/blur_lock.sh
 
 # Move workspace to hdmi screen
 bindsym Mod4+x move workspace to output left
