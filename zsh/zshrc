@@ -67,4 +67,7 @@ fi
 # Source base16 color
 source $HOME/.config/base16-shell/base16-current.sh
 
-neofetch --cpu_temp on --gtk2 off --gtk3 off --disk_show '/'
+neofetch --cpu_temp on --gtk2 off --gtk3 off --refresh_rate on
+
+# Cursor style
+echo -ne "\e[6 q"
