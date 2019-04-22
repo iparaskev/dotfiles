@@ -238,14 +238,12 @@ bindsym Mod1+x exec xrandr --output HDMI-1 --auto --left-of eDP-1
 bindsym Mod1+z exec xrandr --output HDMI-1 --off
 
 # Change sound card output
-bindsym F7 exec ~/.config/i3/scripts/change_sound
+bindsym F7 exec ~/.config/i3/scripts/change_sound -c
 
 # Map the sound controls
-bindsym XF86AudioRaiseVolume exec amixer -c 1 set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -c 1 set Master 5%-
-bindsym F3 exec amixer -c 0 set PCM 5%+
-bindsym F2 exec amixer -c 0 set PCM 5%-
-bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec ~/.config/i3/scripts/change_sound -i
+bindsym XF86AudioLowerVolume exec ~/.config/i3/scripts/change_sound -d
+bindsym XF86AudioMute exec ~/.config/i3/scripts/change_sound -m 
 
 # Map brightness keys
 bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/backlight -inc 1

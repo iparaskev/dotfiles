@@ -1,11 +1,176 @@
 #!/bin/bash
 
-main="/home/iasonas/.asoundrc";
-second="/home/iasonas/.asoundrc_else";
+#  - List cards and show the default
+#  - Choose default card and move ouput
+#  - Increase-decrease volume
+#  - Mute
 
-# Change the .asoundrc file with a second configuration
-cp $main tmp;
-cp $second $main;
-cp tmp $second;
-rm tmp;
+short_options="hlc::i::d::m"
+long_options="help,list_cards,card::,increase::,decrease::,mute"
 
+options=$(getopt -n $0 -o $short_options -l $long_options -- "$@")
+
+# Something gone wrong with the getopt command
+if [ $? -ne 0 ];
+then
+  exit 1
+fi
+
+eval set -- "$options"
+
+# Default values for options with arguments
+LIST_CARDS=0
+CARD=-1
+INCREASE_VOLUME=0
+DECREASE_VOLUME=0
+MUTE=0
+
+# Parse arguments
+while true; do
+	case $1 in
+          -h | --help)
+		  h_message="-h, --help         Show this message\n"
+		  l_message="-l, --list_cards   List system's sound cards\n"
+		  c_message="-c, --card         Choose default sound card\n"
+		  i_message="-i, --increase     Increase the volume, without argument it just add 5%, with argument it adds the value\n"
+		  d_message="-d, --decrease     Decrease the volume, without argument it just add 5%, with argument it adds the value\n"
+		  m_message="-m, --mute         Mute the sound.\n"
+		  echo -e "$h_message$l_message$c_message$i_message$d_message$m_message"
+		  shift
+		  ;;
+          -l | --list_cards)
+		  LIST_CARDS=1
+		  shift
+		  ;;
+          -c | --card)
+		  # Get value
+		  case $2 in
+		   "")
+			   CARD=10
+			   ;;
+		   *) 
+			   CARD=$2
+		           ;;
+		  esac
+		  shift 2
+		  ;;
+          -i | --increase)
+		  # Get value
+		  case $2 in
+		   "")
+			   INCREASE_VOLUME=5
+			   ;;
+		   *) 
+			   INCREASE_VOLUME=$2
+		           ;;
+		  esac
+		  shift 2
+		  ;;
+          -d | --decrease)
+		  # Get value
+		  case $2 in
+		   "")
+			   DECREASE_VOLUME=5
+			   ;;
+		   *) 
+			   DECREASE_VOLUME=$2
+		           ;;
+		  esac
+		  shift 2
+		  ;;
+          -m | --mute)
+		  MUTE=1
+		  shift 
+		  ;;
+	  --)
+		  break
+		  shift
+		  ;;
+	esac
+done
+
+# List cards
+if [[ $LIST_CARDS == 1 ]]
+then
+	# Get all cards
+	cards=()
+	for x in $(pacmd list-sinks | grep name: | cut -d ":" -f 2 | sed 's/<//' | sed 's/>//')
+	do
+		cards+=( $x )
+	done
+
+	# Find the selected card
+	selected=$(pacmd list-sinks | grep "*" | cut -d ":" -f 2)
+
+	counter=0
+	for card in "${cards[@]}"
+	do
+		if (( $counter == $selected ))
+		then
+			echo "* $counter $card"
+		else
+			echo "  $counter $card"
+		fi
+
+		let counter=$counter+1
+	done
+fi
+
+# Change on the fly the selected card
+if [[ $CARD != -1 ]]
+then
+	# Find the selected card
+	selected=$(pacmd list-sinks | grep "*" | cut -d ":" -f 2)
+	cards_num=$(pacmd list-sinks | grep name: | wc -l)
+
+	if (( $CARD == 10 ))
+	then
+		CARD=$(( ($selected+1) % $cards_num))
+		pacmd set-default-sink $CARD
+	else
+		pacmd set-default-sink $CARD
+	fi
+
+	for x in $(pacmd list-sink-inputs | grep index | cut -d ":" -f 2)
+	do
+		pacmd move-sink-input $x $CARD
+	done
+fi
+
+if [[ $INCREASE_VOLUME != 0 ]]
+then
+	# Find the selected card
+	selected=$(pacmd list-sinks | grep "*" | cut -d ":" -f 2)
+
+	sh -c "pactl set-sink-volume $selected +$INCREASE_VOLUME%"
+fi
+
+if [[ $DECREASE_VOLUME != 0 ]]
+then
+	# Find the selected card
+	selected=$(pacmd list-sinks | grep "*" | cut -d ":" -f 2)
+
+	sh -c "pactl set-sink-volume $selected -$DECREASE_VOLUME%"
+
+fi
+
+if [[ $MUTE != 0 ]]
+then
+	# Find the selected card
+	selected=$(pacmd list-sinks | grep "*" | cut -d ":" -f 2)
+	mute_status=$
+
+	# Get all cards
+	mute_status=()
+	for x in $(pacmd list-sinks | grep muted | cut -d ":" -f 2)
+	do
+		mute_status+=( $x )
+	done
+
+	if [[ ${mute_status[$selected]} == "no" ]]
+	then
+		pacmd set-sink-mute $selected 1
+	else
+		pacmd set-sink-mute $selected 0
+	fi
+fi
