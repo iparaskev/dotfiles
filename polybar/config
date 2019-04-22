@@ -69,7 +69,7 @@ module-margin = 1
 ; Modules
 modules-left = i3
 modules-center = cpu memory temperature filesystem wireless-network 
-modules-right = alsa backlight battery xkeyboard date powermenu 
+modules-right = pulseaudio backlight battery xkeyboard date powermenu 
 
 [module/xwindow]
 type = internal/xwindow
@@ -230,6 +230,36 @@ format-padding = 1
 
 [module/alsa]
 type = internal/alsa
+
+format-volume = <ramp-volume> <label-volume>
+
+label-volume = %percentage%%
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 =
+ramp-volume-1 =
+ramp-volume-2 =
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+;format-muted-foreground = ${colors.foreground-alt}
+label-muted = "" 
+format-volume-underline = ${colors.blue2}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+; sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
 
 format-volume = <ramp-volume> <label-volume>
 
