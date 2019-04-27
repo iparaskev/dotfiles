@@ -201,8 +201,10 @@ set $FEH_WS 6
 set $LIBREOFFICE 7
 
 # Multi monitor environment
-workspace 1 output HDMI-1
-workspace 2 output eDP-1
+set $monitor_1 HDMI-1-1
+set $monitor_2 eDP-1-1
+workspace 1 output $monitor_1
+workspace 2 output $monitor_2
 
 # Start firefox on workspace 2 on startup
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
@@ -232,10 +234,10 @@ bindsym Mod4+x move workspace to output left
 bindsym Mod4+z move workspace to output right
 
 # Activate second screen
-bindsym Mod1+x exec xrandr --output HDMI-1 --auto --left-of eDP-1
+bindsym Mod1+x exec xrandr --output $monitor_1 --auto --left-of $monitor_2
 
 # Deactivate second screen
-bindsym Mod1+z exec xrandr --output HDMI-1 --off
+bindsym Mod1+z exec xrandr --output $monitor_1 --off
 
 # Change sound card output
 bindsym F7 exec ~/.config/i3/scripts/change_sound -c
