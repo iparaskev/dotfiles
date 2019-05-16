@@ -4,6 +4,8 @@
 # ~/.zshrc
 #
 
+export TERM=xterm-color
+
 # Check if zplug is installed
 if [[ ! -d $HOME/.zplug ]];
 then
