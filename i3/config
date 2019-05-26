@@ -227,11 +227,11 @@ bindsym Ctrl+Mod1+f workspace $RANGER_WS; exec xterm ranger
 # Bindsym for locking the screen
 bindsym Ctrl+Mod1+l exec ~/.config/i3/scripts/blur_lock.sh
 
-# Move workspace to hdmi screen
+# Move workspaces to another monitor
 bindsym Mod4+x move workspace to output left
-
-# Move workspace to eDP-1 screen
 bindsym Mod4+z move workspace to output right
+bindsym Mod4+c move workspace to output up
+bindsym Mod4+b move workspace to output down
 
 # Activate second screen
 bindsym Mod1+x exec xrandr --output $monitor_1 --auto --left-of $monitor_2
