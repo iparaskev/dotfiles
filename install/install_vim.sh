@@ -49,3 +49,9 @@ if [[ ! -d $PLUGIN ]]
 then
 	git clone https://github.com/ap/vim-buftabline $PLUGIN
 fi
+
+PLUGIN=$PLUGIN_FOLDER/vim-pydocstring
+if [[ ! -d $PLUGIN ]]
+then
+	git clone https://github.com/heavenshell/pydocstring $PLUGIN
+fi

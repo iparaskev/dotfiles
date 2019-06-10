@@ -71,6 +71,7 @@ Plugin 'vim-syntastic/syntastic'     " Syntax checker for various languages
 Plugin 'scrooloose/nerdtree'         " Tree at the left
 Plugin 'jiangmiao/auto-pairs'        " Auto pairs of (), {} etc.
 Plugin 'ap/vim-buftabline'           " Open buffers in a list on tabline
+Plugin 'heavenshell/vim-pydocstring'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
