@@ -6,6 +6,12 @@
 
 export TERM=xterm-color
 
+# termite shell from current dir
+if [[ $TERM == xterm-color ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
+
 # Check if zplug is installed
 if [[ ! -d $HOME/.zplug ]];
 then
