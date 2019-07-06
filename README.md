@@ -30,6 +30,12 @@ It is based on:
 * scrot
 * pulseaudio
 
+### Vim
+
+In order to update the installiation file of vim, the add_vim_script is used. Running
+this script with the repo name and the installed name folder it clones it to 
+bundle folder and updates the installiation file with the new entry.
+
 ## Installiation
 
 After cloning the repo run
