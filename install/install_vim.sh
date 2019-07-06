@@ -55,3 +55,9 @@ if [[ ! -d $PLUGIN ]]
 then
 	git clone https://github.com/heavenshell/pydocstring $PLUGIN
 fi
+
+PLUGIN=$PLUGIN_FOLDER/vim-multiple-cursors
+if [[ ! -d $PLUGIN ]]
+then
+	git clone https://github.com/terryma/vim-multiple-cursors $PLUGIN
+fi
