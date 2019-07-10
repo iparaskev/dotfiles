@@ -7,3 +7,9 @@ git_get(){ wget https://github.com/$1/raw/master/$2; }
 
 # Function for activating ssh-agent
 ssh_agent(){ eval `ssh-agent`; ssh-add; }
+
+# Kill all processes with specific name
+kill_proc (){ pids=$(ps -C $1 | grep $1 | cut -d " " -f 2);
+	lines=$(echo $pids | wc -l)
+	for i in `seq $lines`; do kill $(echo $pids | cut -d$'\n' -f$i); done
+}
