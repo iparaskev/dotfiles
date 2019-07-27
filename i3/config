@@ -200,6 +200,7 @@ set $ZATHURA_WS 4
 set $RANGER_WS 5
 set $FEH_WS 6
 set $LIBREOFFICE 7
+set $SPOTIFY_WS 8
 
 # Multi monitor environment
 set $monitor_1 HDMI-1-1
@@ -213,6 +214,9 @@ exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
 # Start termite on workspace 1 on startup
 exec --no-startup-id i3-msg 'workspace 1;exec termite'
 
+# Start spotify on workspace 8 on startup
+exec --no-startup-id i3-msg 'workspace 8;exec spotify'
+
 # Open zathura windows on workspace 4 always
 assign [class="(?i)zathura"] $ZATHURA_WS
 
@@ -221,6 +225,9 @@ assign [class="(?i)feh"] $FEH_WS
 
 # Open libreoffice always on workspace 7 
 assign [class="(?i)libreoffice"] $LIBREOFFICE
+
+# Open spotify always on workspace 7 
+assign [class="(?i)spotify"] $LIBREOFFICE
 
 # Bindsym for opening ranger on workspace 5
 bindsym Ctrl+Mod1+f workspace $RANGER_WS; exec xterm ranger
