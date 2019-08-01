@@ -1,4 +1,4 @@
-SHELL := /bin/sh
+SHELL := /bin/bash
 
 # VARIABLES
 targets = base16-shell bash i3 polybar ranger vim zathura gitconfig Xresources \
