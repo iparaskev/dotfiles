@@ -3,6 +3,11 @@
 TARGET="$HOME/.config/i3"
 BAK="$HOME/.config_bak/"
 
+if [[ ! -d $HOME/.config ]]
+then
+	mkdir -p $HOME/.config
+fi
+
 # Back up the deafault folder
 if [[ -d $TARGET ]]
 then
