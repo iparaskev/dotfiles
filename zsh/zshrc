@@ -4,7 +4,7 @@
 # ~/.zshrc
 #
 
-export TERM=xterm-color
+export TERM="xterm-color"
 
 # termite shell from current dir
 if [[ $TERM == xterm-color ]]; then
@@ -81,3 +81,15 @@ neofetch --cpu_temp on --gtk2 off --gtk3 off --refresh_rate on
 
 # Cursor style
 echo -ne "\e[6 q"
+
+zle-keymap-select () {
+	if [ "$TERM" = "xterm-color" ]; then
+		if [ $KEYMAP = vicmd ]; then
+		    # the command mode for vi
+		    echo -ne "\e[2 q"
+		else
+		    # the insert mode for vi
+		    echo -ne "\e[6 q"
+		fi
+	fi
+}
