@@ -7,3 +7,4 @@ alias cp='cp -i'                                 # Safe from overwitting
 alias mv='mv -i'                                 # Safe from overwitting
 alias matlab='/home/iasonas/bu/mnt/ubuntu/usr/local/MATLAB/R2017a/bin/matlab'
 alias feh='feh --scale-down'                     # Show images to fit screen
+alias tmux='tmux -2'                             # Tmux messes up vim colors
