@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 # VARIABLES
 targets = base16-shell bash i3 polybar ranger vim zathura gitconfig Xresources \
-	  zsh
+	  zsh tmux
 
 # DIRECTORIES
 INSTALL = install
@@ -38,5 +38,8 @@ gitconfig: FORCE
 
 Xresources: FORCE
 	$(SHELL) $(INSTALL)/install_xresources.sh
+
+tmux: FORCE
+	$(SHELL) $(INSTALL)/install_tmux.sh
 
 FORCE: ;
