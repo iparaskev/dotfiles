@@ -77,6 +77,7 @@ Plugin 'jiangmiao/auto-pairs'        " Auto pairs of (), {} etc.
 Plugin 'ap/vim-buftabline'           " Open buffers in a list on tabline
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'lervag/vimtex'               " Latex plugin
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

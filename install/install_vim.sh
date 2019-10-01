@@ -61,3 +61,9 @@ if [[ ! -d $PLUGIN ]]
 then
 	git clone https://github.com/terryma/vim-multiple-cursors $PLUGIN
 fi
+
+PLUGIN=$PLUGIN_FOLDER/vimtex
+if [[ ! -d $PLUGIN ]]
+then
+	git clone https://github.com/lervag/vimtex $PLUGIN
+fi
