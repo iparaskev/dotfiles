@@ -21,6 +21,9 @@ autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 " bash indentation
 autocmd FileType sh setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 
+" latex spell check
+autocmd Filetype tex setlocal spell spelllang=el,en_us
+
 " Buftabline settings
 let g:buftabline_numbers = 1
 
