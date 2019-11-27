@@ -15,6 +15,9 @@ let &colorcolumn="80"    " Show 80 line vertical line
 " python identation
 autocmd FileType py setlocal tabstop=4 softtabstop=4 expandtab 
 
+" java identation
+autocmd FileType java setlocal tabstop=4 softtabstop=4 expandtab  shiftwidth=4
+
 " c language indentation
 autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 
