@@ -13,3 +13,10 @@ kill_proc (){ pids=$(ps -C $1 | grep $1 | cut -d " " -f 2);
 	lines=$(echo $pids | wc -l)
 	for i in `seq $lines`; do kill $(echo $pids | cut -d$'\n' -f$i); done
 }
+
+# print ram usage of a process in MB
+ram_usage (){ 
+	ram_kb=$(ps -p $1 -o rss | awk 'NR==2');
+	ram_mb=$(echo "scale=2;$ram_kb/1000" | bc -l);
+	echo "$ram_mb MB"
+}
