@@ -20,3 +20,16 @@ ram_usage (){
 	ram_mb=$(echo "scale=2;$ram_kb/1000" | bc -l);
 	echo "$ram_mb MB"
 }
+
+# Profile a process in terminal for n seconds
+profile_process (){
+	sh -c "exec $(echo $1);" &
+	pid=$(echo $!)
+
+	end_time=$((SECONDS+$2))
+	while [ $SECONDS -lt $end_time ]; 
+	do
+		ram_usage $pid;
+		sleep 1;
+	done
+}
