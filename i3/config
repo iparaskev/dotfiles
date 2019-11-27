@@ -205,8 +205,8 @@ set $SPOTIFY_WS 8
 # Multi monitor environment
 set $monitor_1 HDMI-1-1
 set $monitor_2 eDP-1-1
-workspace 1 output $monitor_1
-workspace 2 output $monitor_2
+workspace 1 output $monitor_2
+workspace 2 output $monitor_1
 
 # Start termite on workspace 1 on startup
 exec --no-startup-id i3-msg 'workspace 1; exec termite'
