@@ -93,3 +93,6 @@ zle-keymap-select () {
 		fi
 	fi
 }
+
+# Add to path
+PATH="$PATH:$HOME/.local/bin"
