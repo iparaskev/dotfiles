@@ -29,7 +29,9 @@ profile_process (){
 	end_time=$((SECONDS+$2))
 	while [ $SECONDS -lt $end_time ]; 
 	do
-		ram_usage $pid;
-		sleep 1;
+		cat /proc/$pid/smaps | grep -i pss |  awk '{Total+=$2} END {print Total/1024" MB"}'
+		sleep $3;
 	done
+
+	kill -9 $pid
 }
