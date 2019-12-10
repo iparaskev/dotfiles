@@ -16,9 +16,7 @@ kill_proc (){ pids=$(ps -C $1 | grep $1 | cut -d " " -f 2);
 
 # print ram usage of a process in MB
 ram_usage (){ 
-	ram_kb=$(ps -p $1 -o rss | awk 'NR==2');
-	ram_mb=$(echo "scale=2;$ram_kb/1000" | bc -l);
-	echo "$ram_mb MB"
+	cat /proc/$1/smaps | grep -i pss |  awk '{Total+=$2} END {print Total/1024" MB"}'
 }
 
 # Profile a process in terminal for n seconds
