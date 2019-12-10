@@ -33,3 +33,9 @@ profile_process (){
 
 	kill -9 $pid
 }
+
+# Source tektrain workspace
+tek_source () { 
+	source ~/ros2_ws/install/local_setup.zsh;
+	source ~/playground/tektrain_ws/install/local_setup.zsh;
+}
