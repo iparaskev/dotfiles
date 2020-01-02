@@ -15,6 +15,9 @@ let &colorcolumn="80"    " Show 80 line vertical line
 " python identation
 autocmd FileType py setlocal tabstop=4 softtabstop=4 expandtab 
 
+" matlab identation
+autocmd FileType matlab setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
+
 " java identation
 autocmd FileType java setlocal tabstop=4 softtabstop=4 expandtab  shiftwidth=4
 
@@ -81,6 +84,7 @@ Plugin 'ap/vim-buftabline'           " Open buffers in a list on tabline
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'lervag/vimtex'               " Latex plugin
+Plugin 'tpope/vim-surround'          " Surround in vim
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
