@@ -37,6 +37,12 @@ let g:buftabline_numbers = 1
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
                                     \ | exe "normal! g'\"" | endif
 
+" Config netrw
+"let g:netrw_liststyle = 3
+"let g:netrw_banner = 0
+"let g:netrw_browse_split = 5
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'  " Skip dotfiles
+
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -87,6 +93,7 @@ Plugin 'heavenshell/vim-pydocstring'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'lervag/vimtex'               " Latex plugin
 Plugin 'tpope/vim-surround'          " Surround in vim
+Plugin 'tpope/vim-vinegar'           " Better netrw
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
