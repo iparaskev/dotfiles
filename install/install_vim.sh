@@ -32,12 +32,6 @@ then
 	git clone git://github.com/jiangmiao/auto-pairs.git $PLUGIN
 fi
 
-PLUGIN=$PLUGIN_FOLDER/nerdtree
-if [[ ! -d $PLUGIN ]]
-then
-	git clone https://github.com/scrooloose/nerdtree.git $PLUGIN
-fi
-
 PLUGIN=$PLUGIN_FOLDER/syntastic
 if [[ ! -d $PLUGIN ]]
 then
