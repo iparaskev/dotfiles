@@ -53,6 +53,9 @@ let g:syntastic_quiet_messages = {
     \ "regex":  '\m\[C03\d\d\]',
     \ "file:p": ['\m\c.h$'] }
 
+" Set default google docstring template
+let g:pydocstring_templates_dir = '~/.vim/bundle/vim-pydocstring/template/google'
+
 """""""""""""""""  For terminals that dont support 256 colors
 """""""""""""""""
 " (Or if you want terminal's default colors)
@@ -78,7 +81,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'vim-syntastic/syntastic'     " Syntax checker for various languages
-Plugin 'scrooloose/nerdtree'         " Tree at the left
 Plugin 'jiangmiao/auto-pairs'        " Auto pairs of (), {} etc.
 Plugin 'ap/vim-buftabline'           " Open buffers in a list on tabline
 Plugin 'heavenshell/vim-pydocstring'
