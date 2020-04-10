@@ -14,6 +14,7 @@ let &colorcolumn="80"    " Show 80 line vertical line
 
 " python identation
 autocmd FileType py setlocal tabstop=4 softtabstop=4 expandtab 
+autocmd BufWritePre *.pl %s/\s\+$//e  " auto remove of trailing whitespaces
 
 " matlab identation
 autocmd FileType matlab setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4

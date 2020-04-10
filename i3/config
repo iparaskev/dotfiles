@@ -180,7 +180,8 @@ bindsym Mod4+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #bar {
-#        status_command i3status
+##        status_command i3status
+#	tray_output primary
 #}
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -197,7 +198,7 @@ hide_edge_borders both
 
 # Workspaces number per program
 set $ZATHURA_WS 4
-set $RANGER_WS 5
+set $NEMO_WS 5
 set $FEH_WS 6
 set $LIBREOFFICE 7
 set $SPOTIFY_WS 8
@@ -214,6 +215,10 @@ exec --no-startup-id i3-msg 'workspace 1; exec termite'
 # Start firefox on workspace 2 on startup
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
 
+# Open nemo on startup
+exec --no-startup-id nemo
+for_window [class="(?i)nemo"] move container to workspace $NEMO_WS
+
 # Start spotify on workspace 8 on startup
 exec --no-startup-id spotify
 for_window [class="Spotify"] move container to workspace $SPOTIFY_WS
@@ -226,9 +231,6 @@ assign [class="(?i)feh"] $FEH_WS
 
 # Open libreoffice always on workspace 7 
 for_window [class="libreoffice"] move container to workspace $LIBREOFFICE
-
-# Bindsym for opening ranger on workspace 5
-bindsym Ctrl+Mod1+f workspace $RANGER_WS; exec xterm ranger
 
 # Bindsym for locking the screen
 bindsym Ctrl+Mod1+l exec ~/.config/i3/scripts/blur_lock.sh
