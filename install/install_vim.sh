@@ -61,3 +61,9 @@ if [[ ! -d $PLUGIN ]]
 then
 	git clone https://github.com/lervag/vimtex $PLUGIN
 fi
+
+PLUGIN=$PLUGIN_FOLDER/vim-vinegar
+if [[ ! -d $PLUGIN ]]
+then
+	git clone https://github.com/tpope/vim-vinegar $PLUGIN
+fi
