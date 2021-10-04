@@ -48,7 +48,7 @@ while true; do
 		   "")
 			   CARD=10
 			   ;;
-		   *) 
+		   *)
 			   CARD=$2
 		           ;;
 		  esac
@@ -60,7 +60,7 @@ while true; do
 		   "")
 			   INCREASE_VOLUME=5
 			   ;;
-		   *) 
+		   *)
 			   INCREASE_VOLUME=$2
 		           ;;
 		  esac
@@ -72,7 +72,7 @@ while true; do
 		   "")
 			   DECREASE_VOLUME=5
 			   ;;
-		   *) 
+		   *)
 			   DECREASE_VOLUME=$2
 		           ;;
 		  esac
@@ -80,7 +80,7 @@ while true; do
 		  ;;
           -m | --mute)
 		  MUTE=1
-		  shift 
+		  shift
 		  ;;
 	  --)
 		  break
@@ -157,20 +157,21 @@ fi
 if [[ $MUTE != 0 ]]
 then
 	# Find the selected card
-	selected=$(pacmd list-sinks | grep "*" | cut -d ":" -f 2)
-	mute_status=$
+	selected=$(pactl info | grep -i "Default Sink" | cut -d ":" -f 2)
+	selected=$(echo $selected | sed 's/ //g')
+	#echo $selected
+	is_muted=$(pacmd list-sinks | grep -A 10 $selected | grep -i "Muted: yes")
+	#echo $is_muted
 
-	# Get all cards
-	mute_status=()
-	for x in $(pacmd list-sinks | grep muted | cut -d ":" -f 2)
-	do
-		mute_status+=( $x )
-	done
-
-	if [[ ${mute_status[$selected]} == "no" ]]
+	mute_value=""
+	if [[ ! -z "$is_muted" ]]
 	then
-		pacmd set-sink-mute $selected 1
+		#echo 1
+		mute_value=0
 	else
-		pacmd set-sink-mute $selected 0
+		#echo 2
+		mute_value=1
 	fi
+
+	pacmd set-sink-mute $selected $mute_value
 fi

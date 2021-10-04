@@ -16,25 +16,56 @@
 ;
 ;==========================================================
 
-[colors]
-white = #d7d7d7
+[color]
+;white = #d7d7d7
 gray = #585858
-black = #090909
-red = #cc6666
-blue = #95aec7
+;black = #090909
+;red = #cc6666
+;blue = #95aec7
 blue2 = #6699cc
-yellow = #c7ae95
+;yellow = #c7ae95
 yellow2 = #ffcc66
-green = #aec795
-cyan = #8abeb7
-purple = #cc99cc
-orange = #de935f
+;green = #aec795
+;cyan = #8abeb7
+;purple = #cc99cc
+;orange = #de935f
 background = #1d1f21
 foreground = #c5c8c6
 selection = #373b41
 linecolor = #fba922
 bordercolor = #333
 accent = #e60053
+
+;; Active Colors
+bg = #00000000
+fg = #EAEAEA
+fg-alt = #9C9C9C
+
+trans = #aa2F343F
+white = #FFFFFF
+black = #000000
+
+;; Material Colors
+
+red = #e53935
+pink = #d81b60
+purple = #8e24aa
+deep-purple = #5e35b1
+indigo = #3949ab
+blue = #1e88e5
+light-blue = #039be5
+cyan = #00acc1
+teal = #00897b
+green = #43a047
+light-green = #7cb342
+lime = #c0ca33
+yellow = #fdd835
+amber = #ffb300
+orange = #fb8c00
+deep-orange = #f4511e
+brown = #6d4c41
+grey = #757575
+blue-gray = #546e7a
 
 [bar/main]
 monitor = ${env:MONITOR:}
@@ -49,27 +80,37 @@ radius = 0.0
 fixed-center = false
 
 ; Colors
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${color.trans}
+foreground = ${color.fg-alt}
 
 ; Fonts
-font-0 = AnonymousPro:size=12
-font-1 = FontAwesome:size=10;
-font-2 = xosTerminus:size=10
-font-3 = Roboto:size=10
-font-4 = Wuncon Siji:size=10;1
+font-0 = "Droid Sans:size=9:weight=bold;2"
+font-1 = "Iosevka Nerd Font:size=12;2"
+;font-3 = AnonymousPro:size=12
+;font-1 = FontAwesome:size=10;
+;font-2 = xosTerminus:size=10
+;font-3 = Roboto:size=10
+;font-4 = Wuncon Siji:size=10;1
 
 ; Underline modules
 underline-size = 2
-underline-color = ${colors.white}
+underline-color = ${color.white}
 
 ; Number of spaces between modules.
-module-margin = 1
+;module-margin = 1
+module-margin-left = 1
+module-margin-right = 1
+
 
 ; Modules
 modules-left = i3
-modules-center = cpu memory temperature filesystem wireless-network 
-modules-right = pulseaudio backlight battery xkeyboard date powermenu 
+;modules-center = cpu date temperature filesystem wireless-network 
+modules-center = date 
+modules-right = memory pulseaudio backlight battery  network xkeyboard sysmenu 
+
+dim-value = 1.0
+
+enable-ipc = true
 
 [module/xwindow]
 type = internal/xwindow
@@ -81,10 +122,10 @@ blacklist-0 = num lock
 blacklist-1 = caps lock
 
 format-prefix = " "
-format-prefix-underline = ${colors.blue2}
+;format-prefix-underline = ${color.blue2}
 
 label-layout = %layout%
-label-layout-underline = ${colors.blue2}
+;label-layout-underline = ${color.blue2}
 
 [module/filesystem]
 type = internal/fs
@@ -93,7 +134,7 @@ interval = 25
 mount-0 = /
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free%
-label-mounted-underline = ${colors.red}
+;label-mounted-underline = ${color.red}
 
 
 [module/i3]
@@ -103,29 +144,38 @@ index-sort = true
 wrapping-scroll = false
 ;pin-workspaces = true
 
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-3 = 4;
+;ws-icon-4 = 5;
+;ws-icon-5 = 6;
+;ws-icon-6 = 7;
+;ws-icon-7 = 8;
+;ws-icon-default =
 ws-icon-0 = 1;
-ws-icon-1 = 2;
+ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
-ws-icon-default =
+ws-icon-default = 
 
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = ${colors.red}
-label-mode-foreground = ${colors.foreground}
+label-mode-background = ${color.red}
+label-mode-foreground = ${color.foreground}
 
 label-focused = %index%:%icon%
-label-focused-foreground = ${colors.white}
-label-focused-background = ${colors.selection}
+label-focused-foreground = ${color.white}
+label-focused-background = ${color.selection}
 label-focused-underline = #fba922
 label-focused-padding = 1
 
 label-unfocused = %index%:%icon%
-label-unfocused-foreground = ${colors.foreground}
+label-unfocused-foreground = ${color.foreground}
 label-unfocused-padding = 1
 
 label-visible = %index%:%icon%
@@ -134,8 +184,8 @@ label-visible-padding = 1
 
 label-urgent = %index%:%icon%
 label-urgent-foreground = #ffffff
-label-urgent-background = ${colors.gray}
-label-urgent-underline = ${colors.purple}
+label-urgent-background = ${color.gray}
+label-urgent-underline = ${color.purple}
 label-urgent-padding = 2
 
 [module/mpd]
@@ -157,7 +207,7 @@ card = intel_backlight
 
 format = <ramp> <label>
 label = %percentage%%
-format-underline = ${colors.blue2}
+;format-underline = ${color.blue2}
 
 ramp-0 = 🌕
 ramp-1 = 🌔
@@ -168,17 +218,82 @@ ramp-4 = 🌑
 [module/cpu]
 type = internal/cpu
 interval = 2
-;format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.red}
+;format-prefix-foreground = ${color.foreground-alt}
+format-underline = ${color.red}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = " "
-#format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.red}
-label = %percentage_used%%
+#format-prefix-foreground = ${color.foreground-alt}
+#format-underline = ${color.red}
+label =  %percentage_used%%
+
+[module/network]
+type = internal/network
+
+interface = wlp6s0
+interval = 1.0
+
+;ping-interval = 3
+;;udspeed-minwidth = 5
+accumulate-stats = true
+unknown-as-up = true
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+;;format-packetloss = <animation-packetloss> <label-connected>
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+label-connected = %{A1:nm-connection-editor:}直 %essid%%{A}
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+; Default: (none)
+label-disconnected = 睊
+label-disconnected-foreground = ${color.fg-alt}
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = #eefafafa
+
+ramp-signal-0 = 直
+ramp-signal-1 = 直
+ramp-signal-2 = 直
+ramp-signal-3 = 直
+ramp-signal-4 = 直
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/wlan]
 type = internal/network
@@ -193,14 +308,14 @@ format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+;label-disconnected-foreground = ${color.foreground-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${color.foreground-alt}
 
 [module/eth]
 type = internal/network
@@ -209,25 +324,40 @@ interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${color.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+;label-disconnected-foreground = ${color.foreground-alt}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/date]
 type = internal/date
-interval = 5
 
-date =   %d/%m/%y  %H:%M
-label-connected-underline = ${colors.red}
-date-alt =   %d/%m/%y  %H:%M:%S
+interval = 1.0
 
-format-underline = ${colors.blue2}
-format-padding = 1
+time = "%a %b %d    %I:%M %p"
+;time-alt = %B %d, %Y
+
+format = <label>
+label = %time%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;
+;[module/date]
+;type = internal/date
+;interval = 5
+;
+;date =   %d/%m/%y  %H:%M
+;label-connected-underline = ${color.red}
+;date-alt =   %d/%m/%y  %H:%M:%S
+;
+;format-underline = ${color.blue2}
+;format-padding = 1
 
 [module/alsa]
 type = internal/alsa
@@ -243,9 +373,9 @@ ramp-volume-2 =
 
 ramp-headphones-0 = 
 ramp-headphones-1 = 
-;format-muted-foreground = ${colors.foreground-alt}
+;format-muted-foreground = ${color.foreground-alt}
 label-muted = "" 
-format-volume-underline = ${colors.blue2}
+format-volume-underline = ${color.blue2}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -264,7 +394,7 @@ interval = 5
 
 format-volume = <ramp-volume> <label-volume>
 
-label-volume = %percentage%%
+label-volume = %{A1:pavucontrol:}%percentage%%{A}
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 =
@@ -273,33 +403,100 @@ ramp-volume-2 =
 
 ramp-headphones-0 = 
 ramp-headphones-1 = 
-;format-muted-foreground = ${colors.foreground-alt}
+;format-muted-foreground = ${color.foreground-alt}
 label-muted = "" 
-format-volume-underline = ${colors.blue2}
+;format-volume-underline = ${color.blue2}
 
 [module/battery]
 type = internal/battery
+
+full-at = 99
+
+; $ ls -1 /sys/class/power_supply/
 battery = BAT0
-adapter = AC
-full-at = 98
+adapter = ACAD
 
-format-charging = <ramp-capacity> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
+poll-interval = 2
+time-format = %H:%M
 
-label-full =  %percentage%%
-;
-; Only applies if <ramp-capacity> is used
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <animation-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <ramp-capacity>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-full = <ramp-capacity> <label-full>
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;label-full = Fully Charged
+label-full = 
+label-full-foreground = ${color.green} 
+
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
-label-charging = %percentage%%
-label-discharging = %percentage%%
-format-charging-underline = ${colors.blue2}
-format-discharging-underline = ${colors.blue2}
-format-full-underline = ${colors.blue2}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+;[module/battery]
+;type = internal/battery
+;battery = BAT0
+;adapter = AC
+;full-at = 98
+;
+;format-charging = <ramp-capacity> <label-charging>
+;format-discharging = <ramp-capacity> <label-discharging>
+;
+;label-full =  %percentage%%
+;;
+;; Only applies if <ramp-capacity> is used
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-3 = 
+;ramp-capacity-4 = 
+;
+;label-charging = %percentage%%
+;label-discharging = %percentage%%
+;format-charging-underline = ${color.blue2}
+;format-discharging-underline = ${color.blue2}
+;format-full-underline = ${color.blue2}
 
 [module/temperature]
 type = internal/temperature
@@ -307,18 +504,18 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = ${colors.red}
+format-underline = ${color.red}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-;label-warn-foreground = ${colors.secondary}
+;label-warn-foreground = ${color.secondary}
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-;ramp-foreground = ${colors.yellow}
+;ramp-foreground = ${color.yellow}
 
 [module/wireless-network]
 type = internal/network
@@ -328,7 +525,7 @@ interval = 5.0
 
 format-connected = <label-connected>
 label-connected =  %essid%
-label-connected-underline = ${colors.red}
+label-connected-underline = ${color.red}
 
 [module/powermenu]
 type = custom/menu
@@ -338,7 +535,7 @@ format-padding = 1
 expand-right = true
 
 label-open = 
-format-underline = ${colors.blue2}
+format-underline = ${color.blue2}
 label-close = 
 label-separator = |
 label-separator-margin = 1
@@ -366,6 +563,17 @@ menu-3-0 = cancel
 menu-3-0-exec = menu-open-0
 menu-3-1 = hibernate
 menu-3-1-exec =  systemctl hibernate
+
+[module/sysmenu]
+type = custom/text
+
+content = 襤
+;;content-background = ${color.bg}
+content-foreground = ${color.fg}
+content-padding = 2
+
+click-left = ~/.config/polybar/scripts/elementary-sysmenu
+click-right = ~/.config/polybar/scripts/elementary-sysmenu
 
 [settings]
 screenchange-reload = true

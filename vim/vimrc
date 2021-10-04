@@ -6,18 +6,22 @@ set background=dark
 
 syntax enable 	       " enable syntax highlighting
 set number             " show line numbers
-set cursorline         " highlight current line 
+set cursorline         " highlight current line
 set hlsearch           " highlight matches at search
 set foldmethod=indent  " folding
 
 let &colorcolumn="80"    " Show 80 line vertical line
 
 " python identation
-autocmd FileType py setlocal tabstop=4 softtabstop=4 expandtab 
-autocmd BufWritePre *.py %s/\s\+$//e  " auto remove of trailing whitespaces
+autocmd FileType py setlocal tabstop=4 softtabstop=4 expandtab
+autocmd BufWritePre * %s/\s\+$//e  " auto remove of trailing whitespaces
 
 " matlab identation
 autocmd FileType matlab setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
+
+set expandtab
+set shiftwidth=4
+set tabstop=4
 
 " java identation
 autocmd FileType java setlocal tabstop=4 softtabstop=4 expandtab  shiftwidth=4
@@ -54,6 +58,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']     "Python checker
+"let g:syntastic_c_checkers = ['clang_check']     "Python checker
 let g:syntastic_quiet_messages = {
     \ "!level": "errors",
     \ "type":   "syntax",
@@ -63,6 +68,7 @@ let g:syntastic_quiet_messages = {
 " Set default google docstring template
 let g:pydocstring_templates_dir = '~/.vim/bundle/vim-pydocstring/template/google'
 
+au BufNewFile,BufRead *.tmpl set ft=jinja
 """""""""""""""""  For terminals that dont support 256 colors
 """""""""""""""""
 " (Or if you want terminal's default colors)
@@ -95,6 +101,9 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'lervag/vimtex'               " Latex plugin
 Plugin 'tpope/vim-surround'          " Surround in vim
 Plugin 'tpope/vim-vinegar'           " Better netrw
+Plugin 'igordejanovic/textx.vim'     " Textx
+Plugin 'lepture/vim-jinja'     " Textx
+Plugin 'tikhomirov/vim-glsl' "GLSL syntax highlighting
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
