@@ -96,3 +96,6 @@ zle-keymap-select () {
 
 # Add to path
 PATH="$PATH:$HOME/.local/bin"
+
+# Set grim directory
+export GRIM_DEFAULT_DIR=$HOME/Documents/Screenshots

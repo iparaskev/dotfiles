@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 # VARIABLES
 targets = base16-shell bash i3 polybar ranger vim zathura gitconfig Xresources \
-	  zsh tmux
+		  zsh tmux sway
 
 # DIRECTORIES
 INSTALL = install
@@ -41,5 +41,8 @@ Xresources: FORCE
 
 tmux: FORCE
 	$(SHELL) $(INSTALL)/install_tmux.sh
+
+sway: FORCE
+	$(SHELL) $(INSTALL)/install_sway.sh
 
 FORCE: ;

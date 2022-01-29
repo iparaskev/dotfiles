@@ -10,6 +10,7 @@ alias feh='feh --scale-down'                     # Show images to fit screen
 alias tmux='tmux -2'                             # Tmux messes up vim colors
 # github aliases
 alias gs='git status'
+alias gf='git fetch'
 alias ga='git add'
 alias gd='git diff'
 alias gl='git log'
