@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 # VARIABLES
 targets = base16-shell bash i3 polybar ranger vim zathura gitconfig Xresources \
-		  zsh tmux sway
+		  zsh tmux sway nvim
 
 # DIRECTORIES
 INSTALL = install
@@ -29,6 +29,9 @@ ranger: FORCE
 
 vim: FORCE
 	$(SHELL) $(INSTALL)/install_vim.sh
+
+nvim: FORCE
+	$(SHELL) $(INSTALL)/install_nvim.sh
 
 zathura: FORCE
 	$(SHELL) $(INSTALL)/install_zathura.sh
