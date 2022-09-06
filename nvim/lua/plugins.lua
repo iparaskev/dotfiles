@@ -9,6 +9,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'jiangmiao/auto-pairs'
 
 vim.call('plug#end')
 

@@ -11,7 +11,7 @@ options.guicursor = false -- Disable changing the cursor
 
 window_options.number = true
 window_options.cursorline = true -- highlight current line
-window_options.foldmethod = "indent" -- Folding
+--window_options.foldmethod = "indent" -- Folding
 window_options.colorcolumn = "80"
 
 buffer_options.expandtab = true -- Expand tabs.
@@ -20,3 +20,4 @@ buffer_options.tabstop = 4
 
 vim.cmd("syntax enable")
 vim.cmd("colorscheme gruvbox")
+--vim.cmd("autocmd BufReadPost * \\ if line("'"") >= 1 && line("'"") <= line("$") && &ft !~# 'commit' \\ | exe "normal! g`"" \\ | endif")
