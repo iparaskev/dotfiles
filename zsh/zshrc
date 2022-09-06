@@ -98,7 +98,7 @@ zle-keymap-select () {
 export GRIM_DEFAULT_DIR=$HOME/Documents/Screenshots
 
 # Add to path
-PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/.local/bin:${HOME}/.cargo/bin"
 
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
