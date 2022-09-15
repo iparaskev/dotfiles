@@ -10,6 +10,7 @@ Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'farmergreg/vim-lastplace'
 
 vim.call('plug#end')
 
